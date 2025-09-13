@@ -7,14 +7,14 @@ from utils import read_mesh, hu_to_density, density_to_modulus, interpolate_modu
 # Paths & parameters
 
 Dir = Path("data")  # adjust to your repo structure
-Mimics_Dir = Dir / "HU"
-Mesh_Dir = Dir / "Mesh"
-Density_Modulus_File = Dir / "design_points1.xlsx"
-Eqs_File = Dir / "Eqs.xlsx"
+Mimics_Dir = Dir / "HU" # adjust to your repo structure
+Mesh_Dir = Dir / "Mesh" # adjust to your repo structure
+Density_Modulus_File = Dir / "Equations.xlsx" # adjust to your repo structure
+Eqs_File = Dir / "Calibrations.xlsx" # adjust to your repo structure
 
-RESOLUTION = 0.08
-BIN_WIDTH = 10
-POISSON_RATIO = 0.3
+RESOLUTION = 0.08 #recomended
+BIN_WIDTH = BIN # adjust the interval values based on your problem
+POISSON_RATIO = 0.3 #you can change based on your material
 
 # Main workflow
 def main():
