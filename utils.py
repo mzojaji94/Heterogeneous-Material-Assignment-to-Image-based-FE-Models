@@ -4,13 +4,8 @@ from pathlib import Path
 from scipy.interpolate import RegularGridInterpolator
 from scipy.spatial import cKDTree
 
-RESOLUTION = 0.08 #recomended
-BIN_WIDTH = BIN # adjust the interval values based on your problem
-POISSON_RATIO = 0.3 #you can change based on your material
 
-# -------------------------------
 # Mesh & HU Processing
-# -------------------------------
 
 def read_mesh(inp_path):
     """Read nodes and elements from an Abaqus .inp mesh file."""
@@ -39,9 +34,7 @@ def density_to_modulus(density, b, c):
     density = np.where(density < 0.01, 1e-2, density)
     return b * density ** c
 
-# -------------------------------
 # Interpolation & Binning
-# -------------------------------
 
 def fill_nan_with_nearest(grid):
     nan_mask = np.isnan(grid)
@@ -94,9 +87,8 @@ def assign_bins(E_values, bin_width=BIN):
         element_sets[bin_id].append(idx + 1)
     return element_sets, bins
 
-# -------------------------------
+
 # Output Writing
-# -------------------------------
 
 def write_inp_file(out_path, model_name, nodes, elements, element_sets, bins, b, c):
     nodes_coords = np.array([n[1:] for n in nodes])
